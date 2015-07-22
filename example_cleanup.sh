@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
 # Cleans up example.sh so it can run again
 
-source bash-resume.sh
+source ./bash-resume.sh
 
 br_init ".br-test"
 

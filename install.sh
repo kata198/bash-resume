@@ -1,3 +1,3 @@
 #!/bin/bash
 
-install -m 755 bash-resume.sh /etc
+install -m 755 bash-resume.sh $DESTDIR/etc
