@@ -54,6 +54,12 @@ Commands
     br_hash   - Generates a hash from a command, uses md5sum.
 
 
+Complex Commands
+----------------
+
+If you need to pipe or capture output, etc, it is best to write that in a function and use br/nbr to call that function.
+
+
 Installation / License
 ----------------------
 
