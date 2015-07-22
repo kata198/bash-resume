@@ -1,5 +1,5 @@
 # bash-resume
-Adds support in bash scripts to resume scripts (not peform the same completed task twice). 
+Adds support in bash to resume scripts at last failing point with subsequent invocations.
 
 Use this for long-running scripts that may fail (like builds) and need corrections, and it will resume where last left off.
 
