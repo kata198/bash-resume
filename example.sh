@@ -51,4 +51,4 @@ br fail_first_time
 br_clear done_test 
 
 br echo "Executed just once"
-nbr done_test echo "Completed test. Run example_cleanup.sh to run it again."
+nbr done_test echo "Completed test. Run example_cleanup.sh to reset the state before running it again."

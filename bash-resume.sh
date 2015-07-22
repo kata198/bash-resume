@@ -28,7 +28,6 @@
 # Internal - Don't mess with these variables
 _BR_INITTED=0
 _BR_FILENAME=
-BR_EXIT_ON_FAILURE=1   # see br_set_exit_on_failure. Probably does not make sense to ever change this, just don't use br/nbr for those functions.
 
 br_init() {
     # Inits bash-resume. Takes a single argument, which is the filename used for tracking command success.
@@ -47,12 +46,6 @@ br_init() {
     fi
     export _BR_FILENAME
     export _BR_INITTED=1
-}
-
-br_set_exit_on_failure() {
-    # br_set_exit_on_failure - By default br will exit if a command returns non-zero (so calling script again with correcting
-    #  error will rerun that command. Call br_set_exit_on_failure 0 to disable this. Can be changed at any point.
-    export BR_EXIT_ON_FAILURE="$1"
 }
 
 br_reset() {
@@ -116,11 +109,7 @@ nbr() {
         echo "$HASH" >> "$_BR_FILENAME"
         return 0
     fi
-    if [ "$BR_EXIT_ON_FAILURE" -eq 1 ];
-    then
-        exit $RET
-    fi
-    return $RET
+    exit $RET
 }
 
 br_hash() {
