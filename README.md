@@ -68,4 +68,4 @@ It comes with an install.sh which will install it into /etc if you want it on al
 Compatability
 -------------
 
-bash-resume should be compatiable with any sh-based shell, and has been tested with ksh, mksh, zsh, and bash. Will not run on C-shells.
+bash-resume should be compatiable with any sh-based shell, and has been tested with dash, ksh, mksh, zsh, and bash. Will not run on C-shells.
