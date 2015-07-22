@@ -114,7 +114,7 @@ nbr() {
 
 br_hash() {
     # Generates a hash from a command
-    printf "$@" | md5sum | awk {'print $1'}
+    printf "%s" "$@" | md5sum | awk {'print $1'}
 }
 
 _br_just_exec() {

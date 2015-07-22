@@ -1,5 +1,5 @@
 # bash-resume
-Adds support in bash to resume scripts at last failing point with subsequent invocations.
+Adds support in shell scripts to resume scripts at last failing point with subsequent invocations.
 
 Use this for long-running scripts that may fail (like builds) and need corrections, and it will resume where last left off.
 
@@ -64,3 +64,8 @@ Installation / License
 bash-resume.sh can be shipped with your code for portability. It is under LGPL, so you may redistribute it with your software, but must publish any modifications. You must also distribute the LICENSE file.
 
 It comes with an install.sh which will install it into /etc if you want it on all your systems.
+
+Compatability
+-------------
+
+bash-resume should be compatiable with any sh-based shell, and has been tested with ksh, mksh, zsh, and bash. Will not run on C-shells.
