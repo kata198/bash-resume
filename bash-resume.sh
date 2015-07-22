@@ -3,6 +3,10 @@
 # bash-resume.sh - Allows executing scripts with resume support. Will track what commands have completed, and (by default) exit on failure,
 #  with subsequent runs skipping already-completed tasks.
 #
+#  See https://github.com/kata198/bash-resume
+#
+#   Look for example.sh for example usage, and use comments herein or README.md for documentation.
+#
 # Copyright (c) 2015 Timothy Savannah All Rights Reserved
 # 
 # This library is free software; you can redistribute it and/or
