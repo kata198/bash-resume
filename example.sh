@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Just an example of the concepts. This script will fail first run (on purpose) and complete on second run.
 #  use example_reset.sh to reset it.
@@ -19,7 +19,7 @@
 
 
 
-source bash-resume.sh
+source ./bash-resume.sh
 
 br_init ".br-test"
 

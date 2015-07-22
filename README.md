@@ -63,7 +63,7 @@ Installation / License
 
 bash-resume.sh can be shipped with your code for portability. It is under LGPL, so you may redistribute it with your software, but must publish any modifications. You must also distribute the LICENSE file.
 
-It comes with an install.sh which will install it into /etc if you want it on all your systems.
+It comes with an install.sh which will install it into /etc if you want it on all your systems. It will use the standard env variable DESTDIR if you want to package it (like in $RPM_BUILD_ROOT or $pkgdir)
 
 Compatability
 -------------
