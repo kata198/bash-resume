@@ -1,7 +1,104 @@
 #!/bin/sh
 
-# bash-resume.sh - Allows executing scripts with resume support. Will track what commands have completed, and (by default) exit on failure,
-#  with subsequent runs skipping already-completed tasks.
+# bash-resume.sh - Allows executing scripts with resume support. 
+#
+# How it works:
+# -------------
+#
+#
+# **The Very Short Version**
+#
+#  1. Source the bash-resume.sh script from your code
+#
+#  2. Add to top of script: br_init '/path/to/blah.db' 
+#         Where the path you give is to a database that will be created
+#          and used to track execution.
+#
+#  3. Before your "important" steps, place the words "br" (or "nbr", see long description below)
+#      in front of your critical commands.
+#
+#      So like:
+#
+#          ./addDbUser $SOME_USERNAME --db=users
+#
+#      Becomes:
+#
+#          br ./asddDbUser $SOME_USERNAME --db=users
+#
+#  4. Run your script. For the commands prefixed with "br", the following will occur:
+#
+#       If exit code = 0 ( Success )
+#
+#          A hash of that command (or your custom title if you used "nbr")
+#            is noted in the database.
+#
+#          If you run the script again without clearing the database,
+#           or removing that field, that command will be skipped.
+#
+#        If exit code != 0 ( Failure )
+#
+#          Your script will abort at that point.
+#
+#          The next time you run it, all your setup code, for loops, etc stuff without the "br" prefix
+#
+#            will execute again, but the "critical" commands (like add new user to database) that already
+#            completed will not. The script wiil then skip up to the point at which it last failed and run that 
+#            command again.
+#
+# **Other Functions**
+#
+#   br_clear - Clear a specific hash. Use br_hash to get the hash if you didn't use nbr
+#
+#   br_reset - Clear the entire database file. Use this to re-execute all lines on next run.
+#
+# More below
+#
+#  Long/Alternate description:
+#
+#  You prefix your important/critical commands within the script
+#    by one of the bash-resume functions, like:
+#
+#  br mycmd -h a --path="/somewhere/to/elsewhere"
+#
+#   or
+#
+#  nbr myTitleHere -h a ...
+#
+# The lines that you prefix with "br" or "nbr" are the lines where failure/success is tracked.
+#
+#   If they complete successfully, either an auto-generated hash (br) or a unique identifier provided
+#    by you (nbr) is noted in the database (provided as the single argument to br_init).
+#
+# When you have bash-resume disabled (comment out the call to "br_init"), the 'br' and 'nbr' functions
+#  act as if they weren't there, i.e. it just always executes your commands like normal.
+# So you can turn it on/off , which is useful for certain cases
+#
+# br generates a hash from the commandline string.
+#
+#  If you have the same commandline string multiple times, (like a flush_cache.sh command, for example),
+#   you will have to run it like:
+#
+#      nbr 'pre_install_flush' './flush_cache.sh --for-real'
+#
+#  Instead of
+#
+#     br './flush_cache.sh --for-real'
+#
+# Because once a success is marked in the database, future executions of your script will skip over that function.
+#
+# Automatically, if a command marked by 'br' or 'nbr' fails, your script will terminate.
+#
+# This allows you to have your setup code and variable code, for loops, etc just as regular code, but then have distinct steps be bash-resume, like
+#
+#  add user to system, add database user, set password, set quotas,  these could all be commands in your "setup new user" script.
+#
+#  If one of those steps fails, and maybe it's even an automatic invocation, your script will terminate
+#
+#    with that same exit code. Once the situation is resolved, you simply invoke your script again with the same arguments,
+#
+#  it performs all the setup code, for loops, whatever, but it will skip things like "add system user" or "setup quotas" or whatever succeded,
+#   thereby skipping and resuming at the point of last failure.
+
 #
 #  See https://github.com/kata198/bash-resume
 #
