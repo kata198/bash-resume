@@ -1,2 +1,13 @@
+1.0.1 - Aug 02 2017
+ * install.sh: The env var "PREFIX" was being ignored during installation.
+ Either form was affected:
+   PREFIX="/opt/bash-resume" ./install.sh
+ or
+   ./install.sh PREFIX="/opt/bash-resume"
+ * Minor updates to README
+
+ * Note version info in _BR_VERSION (full string, 1.0.1) and
+ _BR_VERSION_{MAJOR,MINOR,PATCHLEVEL} as the split of those dots. See commit
+
 1.0 - Sep 16 2015 "ish"
  * Initial Public Release
