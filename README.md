@@ -58,12 +58,55 @@ Complex Commands
 If you need to pipe or capture output, etc, it is best to write that in a function and use br/nbr to call that function.
 
 
-Installation / License
-----------------------
+Installation
+------------
 
-bash-resume.sh can be shipped with your code for portability. It is under LGPL, so you may redistribute it with your software, but must publish any modifications. You must also distribute the LICENSE file.
+**Install for all users on Local System**
 
-It comes with an install.sh which will install it into /etc if you want it on all your systems. It will use the standard env variable DESTDIR if you want to package it (like in $RPM_BUILD_ROOT or $pkgdir)
+1. Check out the git repo, or download and unpack one of the releases from https://github.com/kata198/bash-resume/releases
+
+2. Inside the unpacked directory, either run *sudo ./install.sh* or change user to root and run *./install.sh*.
+
+    If you want to install to an alternate prefix (default is to just install into /etc), execute like:
+
+      ./install.sh PREFIX="/opt/bash-resume"
+
+    To install as /opt/bash-resume/etc/bash-resume.sh
+
+    DESTDIR will also affect installation path.
+
+    For example, to install into your home directory, run:
+
+      ./install.sh DESTDIR="${HOME}"
+
+    And it will install as "${HOME}/etc/bash-resume.sh"
+
+
+    If you want to just "force it" and have it go into a specific directory, such as if you have a script install it into a site somewhere as part of setup, or if you want it in a special directory in your home dir and don't want to mess with two variables, set *INSTALL_DIR*. The presence of *$INSTALL_DIR* means that PREFIX and DESTDIR are both ignored, and what is given is used as the path. 
+    
+    For example, to install as /mnt/thumbdrive/Shared:
+
+      ./install.sh INSTALL_DIR=/mnt/thumbdrive/Shared
+
+**Packaging**
+
+Just set DESTDIR to the "package directory" variable in yourpackaging software.
+
+For ArchLinux (pacman/makepkg) : 
+
+	./install.sh DESTDIR="${pkgdir}"
+
+For RPM:
+	
+	./install.sh DESTDIR="${RPM_BUILD_ROOT}"
+
+
+If you use another packaging medium, use whatever "package root" is for that environment.
+
+**Shipping with your code / Redistribution**
+
+bash-resume.sh can be shipped with your code for portability.
+It is under LGPL, so you may redistribute it with your software without modification, but should you alter the contents of bash-resume.sh in any way, you must publish those changes to https://github.com/kata198/bash-resume after which you may resume distribution of your modified bash-resume.sh. *To reiterate, you can ship bash-resume verbatim alongside your product/project/scripts/whatever . You must also include the LICENSE file. If you modify the code in whole or in part or reuse it or embed it within your product, you must submit your changes back to me in order to distribute it.* 
 
 Compatability
 -------------
