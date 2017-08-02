@@ -7,7 +7,7 @@
 #
 #   Look for example.sh for example usage, and use comments herein or README.md for documentation.
 #
-# Copyright (c) 2015 Timothy Savannah All Rights Reserved
+# Copyright (c) 2015, 2017 Timothy Savannah All Rights Reserved
 # 
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
