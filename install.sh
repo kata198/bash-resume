@@ -55,6 +55,6 @@ fi
 # Remove any double-slashes
 FINALDIR="$(echo "${FINALDIR}" | sed 's|//|/|g')"
 
-mkdir -p ${FINALDIR}
+mkdir -p "${FINALDIR}"
 
-install -v -m 755 bash-resume.sh ${FINALDIR}/
+install -v -m 755 bash-resume.sh "${FINALDIR}/"
