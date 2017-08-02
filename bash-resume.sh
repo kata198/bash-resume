@@ -25,6 +25,19 @@
 
 # vim: set ts=4 sw=4 expandtab :
 
+# Global version information. May be used to extend, or detect the presence
+#  of some newer feature and offer alternate algorithms, I dunno...
+# But I'm a strong believer in shared knowledge.
+#   Make it easy to find and it will know
+#     its purpose...
+_BR_VERSION="1.0.1"
+_BR_VERSION_MAJOR=1
+_BR_VERSION_MINOR=0
+_BR_VERSION_PATCHLEVEL=1
+_BR_VERSION_EXTRA=
+
+
+
 # Internal - Don't mess with these variables
 _BR_INITTED=0
 _BR_FILENAME=
