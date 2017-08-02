@@ -1,4 +1,4 @@
-1.0.1 - Aug 02 2017
+1.0.1 - Aug 02 2017 
  * install.sh: The env var "PREFIX" was being ignored during installation.
  Either form was affected:
    PREFIX="/opt/bash-resume" ./install.sh
